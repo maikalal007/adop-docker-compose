@@ -6,8 +6,6 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-    networks:
-      - ${CUSTOM_NETWORK_NAME}
     command: elasticsearch -Des.network.host=0.0.0.0
     ports:
       - "9200:9200"
@@ -19,8 +17,6 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-    networks:
-      - ${CUSTOM_NETWORK_NAME}
     environment:
       - "constraint:tier==public"
       - LS_HEAP_SIZE=1024m
@@ -34,8 +30,6 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-    networks:
-      - ${CUSTOM_NETWORK_NAME}
     command: kibana
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
