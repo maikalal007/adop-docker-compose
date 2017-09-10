@@ -1,0 +1,8 @@
+docker-machine create --driver virtualbox --virtualbox-disk-size 8000 manager1  192.168.99.100
+docker-machine create --driver virtualbox --virtualbox-disk-size 8000 node1     192.168.99.101
+docker-machine create --driver virtualbox --virtualbox-disk-size 8000 node2     192.168.99.102
+docker-machine create --driver virtualbox --virtualbox-disk-size 8000 node3     192.168.99.103
+
+docker swarm init --advertise-addr 192.168.99.100
+
+docker swarm join --token SWMTKN-1-06zbenbwerrsy0t22ucdcmmf2v4jcoptmw2ohkwpcvt4qie1g7-bxspp5sqoys4kg2qrgg7daldq 192.168.99.100:2377
